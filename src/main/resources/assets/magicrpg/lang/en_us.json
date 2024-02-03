@@ -1,0 +1,26 @@
+{
+  "item.magicrpg.conj_axe": "Conjured Axe",
+  "item.magicrpg.conj_hoe": "Conjured Hoe",
+  "item.magicrpg.conj_pickaxe": "Conjured Pickaxe",
+  "item.magicrpg.conj_shovel": "Conjured Shovel",
+  "item.magicrpg.conj_sword": "Conjured Sword",
+
+  "item.magicrpg.magic_crystal": "Magic Crystal",
+  "item.magicrpg.basic_bag": "Small Bag",
+
+  "item.magicrpg.empty_scroll": "Blank Spell Scroll",
+  "item.magicrpg.empty_spell_book": "Blank Spell Book",
+  "item.magicrpg.mana_potion": "Mana Potion",
+  "item.magicrpg.mana_regen_potion": "Mana Regeneration",
+
+  "itemGroup.magic_tab": "Magic RPG",
+  "magicrpg.gui.level": "Leveling",
+  "button.magicrpg.level_button": "Skills",
+  "button.magicrpg.spells": "Spells",
+
+  "key.category.magicrpg": "Magic RPG",
+  "key.magicrpg.cast_spell": "Cast Spell",
+  "key.magicrpg.next_spell": "Next Spell",
+  "key.magicrpg.prev_spell": "Previous Spell",
+  "key.magicrpg.level_screen": "Level Menu"
+}

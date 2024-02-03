@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#L#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
+    },
+    "L": {
+      "item": "magicrpg:magic_crystal"
+    }
+  },
+  "result": {
+    "item": "magicrpg:basic_bag",
+    "count": 1
+  }
+}
