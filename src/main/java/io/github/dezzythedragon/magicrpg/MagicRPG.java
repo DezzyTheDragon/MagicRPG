@@ -1,8 +1,13 @@
 package io.github.dezzythedragon.magicrpg;
 
 import com.mojang.logging.LogUtils;
+import io.github.dezzythedragon.magicrpg.entity.MagicEntities;
 import io.github.dezzythedragon.magicrpg.items.MagicItems;
+import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
+import io.github.dezzythedragon.magicrpg.renderer.MagicMissileRenderer;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.ArrowRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -41,6 +46,7 @@ public class MagicRPG {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         MagicItems.MAGIC_ITEMS.register(modEventBus);
+        MagicEntities.MAGIC_ENTITIES.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -49,7 +55,10 @@ public class MagicRPG {
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
-        LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        //LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+        event.enqueueWork(() ->{
+            MagicMessages.register();
+        });
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -67,7 +76,9 @@ public class MagicRPG {
         public static void onClientSetup(FMLClientSetupEvent event) {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            //LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+            EntityRenderers.register(MagicEntities.MAGIC_MISSILE_PROJECTILE.get(), MagicMissileRenderer::new);
         }
     }
 }

@@ -3,6 +3,10 @@ package io.github.dezzythedragon.magicrpg.events;
 import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.client.SpellOverlay;
 import io.github.dezzythedragon.magicrpg.gui.screen.LevelWindowScreen;
+import io.github.dezzythedragon.magicrpg.magic.Spells;
+import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
+import io.github.dezzythedragon.magicrpg.networking.packet.MagicMissileC2SPacket;
+import io.github.dezzythedragon.magicrpg.networking.packet.TestC2SPacket;
 import io.github.dezzythedragon.magicrpg.util.KeyBinds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -19,7 +23,8 @@ public class ClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key key){
             if(KeyBinds.BIND_CAST_SPELL.consumeClick()){
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Cast Spell"));
+                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Cast Spell"));
+                Spells.MAGIC_MISSILE.castSpell();
             }
             else if(KeyBinds.BIND_NEXT_SPELL.consumeClick()){
                 Minecraft.getInstance().player.sendSystemMessage(Component.literal("Next Spell"));
