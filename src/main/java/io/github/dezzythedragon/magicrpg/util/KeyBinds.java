@@ -5,6 +5,10 @@ import net.minecraft.client.KeyMapping;
 import net.minecraftforge.client.settings.KeyConflictContext;
 import org.lwjgl.glfw.GLFW;
 
+/*
+ * Defines the key binds
+ */
+
 public class KeyBinds {
     public static final String MAGICRPG_CATEGORY = "key.category.magicrpg";
     public static final String KEY_CAST_SPELL = "key.magicrpg.cast_spell";

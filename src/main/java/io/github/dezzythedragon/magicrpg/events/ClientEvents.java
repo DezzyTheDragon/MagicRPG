@@ -4,9 +4,6 @@ import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.client.SpellOverlay;
 import io.github.dezzythedragon.magicrpg.gui.screen.LevelWindowScreen;
 import io.github.dezzythedragon.magicrpg.magic.Spells;
-import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
-import io.github.dezzythedragon.magicrpg.networking.packet.MagicMissileC2SPacket;
-import io.github.dezzythedragon.magicrpg.networking.packet.TestC2SPacket;
 import io.github.dezzythedragon.magicrpg.util.KeyBinds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -17,23 +14,27 @@ import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+/*
+ * Set up events that run on the client end like key presses or client huds
+ */
+
 public class ClientEvents {
     @Mod.EventBusSubscriber(modid = MagicRPG.MODID, value = Dist.CLIENT)
     public static class ClientForgeEvents{
+        // Key bind events
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key key){
             if(KeyBinds.BIND_CAST_SPELL.consumeClick()){
-                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Cast Spell"));
+                // TODO: Get player spell capability, get active spell and cast that
                 Spells.MAGIC_MISSILE.castSpell();
             }
             else if(KeyBinds.BIND_NEXT_SPELL.consumeClick()){
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Next Spell"));
+                // TODO: Implement a way to cycle to the next equipped spell
             }
             else if(KeyBinds.BIND_PREV_SPELL.consumeClick()){
-                Minecraft.getInstance().player.sendSystemMessage(Component.literal("Previous Spell"));
+                // TODO: Implement a way to cycle to the previous equipped spell
             }
             else if(KeyBinds.BIND_LEVEL_SCREEN.consumeClick()){
-                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Open Level Menu"));
                 Minecraft.getInstance().setScreen(new LevelWindowScreen(Component.translatable("magicrpg.gui.level")));
             }
         }
@@ -41,6 +42,7 @@ public class ClientEvents {
 
     @Mod.EventBusSubscriber(modid = MagicRPG.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModBusEvents{
+        // Register the keys, so they show up and are re-mappable in the options menu
         @SubscribeEvent
         public static void OnKeyRegister(RegisterKeyMappingsEvent event){
             event.register(KeyBinds.BIND_CAST_SPELL);
@@ -49,6 +51,7 @@ public class ClientEvents {
             event.register(KeyBinds.BIND_LEVEL_SCREEN);
         }
 
+        // Register player HUDS
         @SubscribeEvent
         public static void registerGUIOverlays(RegisterGuiOverlaysEvent event){
             event.registerAboveAll("magic", SpellOverlay.HUD_SPELL);

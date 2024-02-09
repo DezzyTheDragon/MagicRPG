@@ -9,6 +9,11 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
+/*
+ * This is strictly for example purposes
+ */
+
+@Deprecated
 public class TestC2SPacket {
     public TestC2SPacket(){}
     public TestC2SPacket(FriendlyByteBuf buff){}

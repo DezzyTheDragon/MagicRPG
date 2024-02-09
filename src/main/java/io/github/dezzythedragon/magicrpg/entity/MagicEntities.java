@@ -7,6 +7,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+/*
+ * Create and register mod entities
+ */
+
 public class MagicEntities {
     public static final DeferredRegister<EntityType<?>> MAGIC_ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MagicRPG.MODID);
 

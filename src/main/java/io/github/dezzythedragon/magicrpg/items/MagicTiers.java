@@ -3,6 +3,10 @@ package io.github.dezzythedragon.magicrpg.items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 
+/*
+ * Weapon tier enum to define the properties of magic weapons, specifically the conjured items.
+ */
+
 public enum MagicTiers implements Tier {
     LOW(1, 100, 4.0f, 1.0f);
 

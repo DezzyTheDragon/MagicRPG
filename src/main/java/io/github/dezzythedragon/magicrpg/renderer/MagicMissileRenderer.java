@@ -14,6 +14,10 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
+/*
+ * A renderer for the "Magic Missile Projectile"
+ */
+
 public class MagicMissileRenderer extends EntityRenderer<MagicMissileProjectile> {
     private static final ResourceLocation TEXTURE_LOCATION = new ResourceLocation(MagicRPG.MODID, "textures/entity/spells/magic_missile_projectile.png");
     private static final RenderType RENDER_TYPE = RenderType.entityCutoutNoCull(TEXTURE_LOCATION);

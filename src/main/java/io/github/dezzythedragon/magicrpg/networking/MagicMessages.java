@@ -10,6 +10,10 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
+/*
+ * Create and register network messages
+ */
+
 public class MagicMessages {
     private static SimpleChannel INSTANCE;
     private static int packetID = 0;
@@ -20,8 +24,6 @@ public class MagicMessages {
                 .clientAcceptedVersions(s -> true).serverAcceptedVersions(s -> true).simpleChannel();
         INSTANCE = net;
 
-        net.messageBuilder(TestC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(TestC2SPacket::new)
-                .encoder(TestC2SPacket::toBytes).consumerMainThread(TestC2SPacket::handle).add();
         net.messageBuilder(MagicMissileC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(MagicMissileC2SPacket::new)
                 .encoder(MagicMissileC2SPacket::toBytes).consumerMainThread(MagicMissileC2SPacket::handle).add();
     }

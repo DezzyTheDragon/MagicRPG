@@ -54,8 +54,6 @@ public class MagicItems {
 
     // Spell Equipment ==================================================================
     public static RegistryObject<Item> BASIC_BAG = MAGIC_ITEMS.register("basic_bag", () -> new BagItem(9, new Item.Properties().tab(MAGIC_TAB).stacksTo(1)));
-    // public static RegistryObject<Item> MEDIUM_BAG = MAGIC_ITEMS.register("medium_bag", () -> new BagItem(18, new Item.Properties().tab(MAGIC_TAB)));
-    // public static RegistryObject<Item> LARGE_BAG = MAGIC_ITEMS.register("large_bag", () -> new BagItem(27, new Item.Properties().tab(MAGIC_TAB)));
 
 
 }
