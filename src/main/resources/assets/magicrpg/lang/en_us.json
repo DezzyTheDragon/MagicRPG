@@ -9,9 +9,13 @@
   "item.magicrpg.basic_bag": "Small Bag",
 
   "item.magicrpg.empty_scroll": "Blank Spell Scroll",
+  "item.magicrpg.magic_missile_scroll": "Magic Missile Scroll",
   "item.magicrpg.empty_spell_book": "Blank Spell Book",
   "item.magicrpg.mana_potion": "Mana Potion",
   "item.magicrpg.mana_regen_potion": "Mana Regeneration",
+
+  "spell.magicrpg.magic_missile": "Magic Missile",
+  "spell.magicrpg.blank": "It was blank",
 
   "itemGroup.magic_tab": "Magic RPG",
   "magicrpg.gui.level": "Leveling",

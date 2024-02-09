@@ -1,6 +1,7 @@
 package io.github.dezzythedragon.magicrpg.events;
 
 import io.github.dezzythedragon.magicrpg.MagicRPG;
+import io.github.dezzythedragon.magicrpg.items.ConjureInterface;
 import io.github.dezzythedragon.magicrpg.items.ConjuredSwordItem;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +18,7 @@ public class MagicEvents {
         // TODO: Change the conjured items to have a base class to collect and handle common logic
         @SubscribeEvent
         public static void onDropConjuredItem(ItemTossEvent event){
-            if(event.getEntity().getItem().getItem() instanceof ConjuredSwordItem){
+            if(event.getEntity().getItem().getItem() instanceof ConjureInterface){
                 event.setCanceled(true);
             }
         }
