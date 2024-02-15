@@ -2,7 +2,6 @@ package io.github.dezzythedragon.magicrpg.magic;
 
 import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
 import io.github.dezzythedragon.magicrpg.networking.packet.MagicMissileC2SPacket;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 
 public class MagicMissileSpell extends SpellBase{
