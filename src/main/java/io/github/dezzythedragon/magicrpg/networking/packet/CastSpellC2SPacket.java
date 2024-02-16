@@ -25,9 +25,7 @@ public class CastSpellC2SPacket {
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
 
-            // TODO: Create a spell list and get the spell using an ID
-            //SpellBase spell = Spells.MAGIC_MISSILE;
-            SpellBase spell = Spells.FIREBALL;
+            SpellBase spell = Spells.SPELL_LIST.get(spellID);
             spell.castSpellInit(player);
         });
         return true;

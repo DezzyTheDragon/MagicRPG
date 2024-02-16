@@ -1,6 +1,6 @@
 package io.github.dezzythedragon.magicrpg.networking.packet;
 
-import io.github.dezzythedragon.magicrpg.client.ClientManaData;
+import io.github.dezzythedragon.magicrpg.client.ClientMagicData;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -26,7 +26,7 @@ public class ManaDataSyncS2CPacket {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             //Running on client
-            ClientManaData.set(manaValue);
+            ClientMagicData.setMana(manaValue);
         });
         return true;
     }

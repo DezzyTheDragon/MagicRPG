@@ -1,20 +1,25 @@
 package io.github.dezzythedragon.magicrpg.events;
 
+import com.mojang.logging.LogUtils;
 import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.client.SpellOverlay;
 import io.github.dezzythedragon.magicrpg.gui.screen.LevelWindowScreen;
 import io.github.dezzythedragon.magicrpg.magic.Spells;
 import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
 import io.github.dezzythedragon.magicrpg.networking.packet.CastSpellC2SPacket;
+import io.github.dezzythedragon.magicrpg.networking.packet.HotbarSelectionC2SPacket;
 import io.github.dezzythedragon.magicrpg.util.KeyBinds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.NetworkEvent;
 
 /*
  * Set up events that run on the client end like key presses or client huds
@@ -33,9 +38,11 @@ public class ClientEvents {
             }
             else if(KeyBinds.BIND_NEXT_SPELL.consumeClick()){
                 // TODO: Implement a way to cycle to the next equipped spell
+                MagicMessages.sendToServer(new HotbarSelectionC2SPacket(false));
             }
             else if(KeyBinds.BIND_PREV_SPELL.consumeClick()){
                 // TODO: Implement a way to cycle to the previous equipped spell
+                MagicMessages.sendToServer(new HotbarSelectionC2SPacket(true));
             }
             else if(KeyBinds.BIND_LEVEL_SCREEN.consumeClick()){
                 Minecraft.getInstance().setScreen(new LevelWindowScreen(Component.translatable("magicrpg.gui.level")));

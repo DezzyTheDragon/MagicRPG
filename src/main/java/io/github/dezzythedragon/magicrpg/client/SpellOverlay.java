@@ -19,7 +19,7 @@ public class SpellOverlay {
     private static final ResourceLocation MANA_EMPTY = new ResourceLocation(MagicRPG.MODID, "textures/gui/spell_overlay.png");
     private static final ResourceLocation MANA_FULL = new ResourceLocation(MagicRPG.MODID, "textures/gui/spell_overlay.png");
 
-    // The area that displays the active and currently equiped spells
+    // The area that displays the active and currently equipped spells
     public static final IGuiOverlay HUD_SPELL = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
         int x = (screenWidth / 8) - 31;
         int y = screenHeight - 23;
@@ -28,6 +28,8 @@ public class SpellOverlay {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, SPELL_SELECTOR);
         gui.blit(poseStack, x, y, 0, 0, 62, 23);
+
+        gui.blit(poseStack, x + ((ClientMagicData.getPlayerSelection() * 20) - 1), y, 67, 0, 24, 23);
     });
 
     // The area that displays the player's mana bar
@@ -44,7 +46,7 @@ public class SpellOverlay {
         // Render the bar overlay to display amount of mana player has
         //int manaAmount = (int)(texture_width * percentage of current manna)
         //int manaAmount = 65;
-        int manaAmount = (int)(65.0F * ((float)ClientManaData.getPlayerMana() / 100.0F));
+        int manaAmount = (int)(65.0F * ((float) ClientMagicData.getPlayerMana() / 100.0F));
 
         RenderSystem.setShaderTexture(0, MANA_FULL);
         gui.blit(poseStack, x, y, 1, 33, manaAmount, 5);
