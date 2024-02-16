@@ -7,6 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class ClientMagicData {
     private static int playerMana;
     private static int playerSelection;
+    private static int[] equippedSpells = {0, 1, -1};
 
     public static void setMana(int mana){
         playerMana = mana;
@@ -21,5 +22,9 @@ public class ClientMagicData {
 
     public static int getPlayerSelection(){
         return playerSelection;
+    }
+
+    public static int getHotbarSpell(int index) {
+        return equippedSpells[index];
     }
 }

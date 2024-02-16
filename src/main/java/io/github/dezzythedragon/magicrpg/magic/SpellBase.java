@@ -3,7 +3,9 @@ package io.github.dezzythedragon.magicrpg.magic;
 import com.mojang.logging.LogUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 
@@ -12,6 +14,7 @@ public class SpellBase {
     private final Component NAME;
     protected int manaCost = 0;
     protected boolean canCast = false;
+    protected ResourceLocation icon = TextureManager.INTENTIONAL_MISSING_TEXTURE;
 
     public SpellBase(int pSpellID, Component pSpellName){
         ID = pSpellID;
@@ -73,4 +76,6 @@ public class SpellBase {
     public Component getSpellName(){
         return NAME;
     }
+
+    public ResourceLocation getIcon() { return icon; }
 }

@@ -1,5 +1,7 @@
 package io.github.dezzythedragon.magicrpg.networking.packet;
 
+import com.mojang.logging.LogUtils;
+import io.github.dezzythedragon.magicrpg.magic.PlayerMagicProvider;
 import io.github.dezzythedragon.magicrpg.magic.SpellBase;
 import io.github.dezzythedragon.magicrpg.magic.Spells;
 import net.minecraft.network.FriendlyByteBuf;
@@ -24,9 +26,18 @@ public class CastSpellC2SPacket {
         NetworkEvent.Context context = event.get();
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
+            // TODO: Attempt to put the spell getting here in the package on the server
+            /*player.getCapability(PlayerMagicProvider.PLAYER_MAGIC).ifPresent(playerMagic -> {
+                spellID = playerMagic.getSelectedSpell();
+            });*/
 
-            SpellBase spell = Spells.SPELL_LIST.get(spellID);
-            spell.castSpellInit(player);
+            if(spellID != -1){
+                SpellBase spell = Spells.SPELL_LIST.get(spellID);
+                spell.castSpellInit(player);
+            }
+            else{
+                LogUtils.getLogger().info("No spell set");
+            }
         });
         return true;
     }

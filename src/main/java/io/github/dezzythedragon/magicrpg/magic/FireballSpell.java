@@ -1,7 +1,9 @@
 package io.github.dezzythedragon.magicrpg.magic;
 
+import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.entity.MagicFireballProjectile;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 
@@ -9,6 +11,7 @@ public class FireballSpell extends SpellBase{
     public FireballSpell(int pSpellID) {
         super(pSpellID, Component.translatable("spell.magicrpg.fireball"));
         this.manaCost = 10;
+        this.icon = new ResourceLocation(MagicRPG.MODID, "textures/entity/spells/fireball_projectile.png");
     }
 
     @Override
