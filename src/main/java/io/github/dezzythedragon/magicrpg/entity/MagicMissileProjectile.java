@@ -1,5 +1,7 @@
 package io.github.dezzythedragon.magicrpg.entity;
 
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,6 +55,8 @@ public class MagicMissileProjectile extends AbstractHurtingProjectile {
         }
     }
 
-    // TODO: Change the particle trail for the projectile to something more appropriate.
-    //          overriding the function `ParticleOptions getTrailParticle()`
+    @Override
+    protected ParticleOptions getTrailParticle() {
+        return ParticleTypes.INSTANT_EFFECT;
+    }
 }
