@@ -1,6 +1,7 @@
 package io.github.dezzythedragon.magicrpg.networking;
 
 import io.github.dezzythedragon.magicrpg.MagicRPG;
+import io.github.dezzythedragon.magicrpg.networking.packet.CastSpellC2SPacket;
 import io.github.dezzythedragon.magicrpg.networking.packet.MagicMissileC2SPacket;
 import io.github.dezzythedragon.magicrpg.networking.packet.ManaDataSyncS2CPacket;
 import io.github.dezzythedragon.magicrpg.networking.packet.TestC2SPacket;
@@ -25,8 +26,12 @@ public class MagicMessages {
                 .clientAcceptedVersions(s -> true).serverAcceptedVersions(s -> true).simpleChannel();
         INSTANCE = net;
 
+        //Client to Server packets
         net.messageBuilder(MagicMissileC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(MagicMissileC2SPacket::new)
                 .encoder(MagicMissileC2SPacket::toBytes).consumerMainThread(MagicMissileC2SPacket::handle).add();
+        net.messageBuilder(CastSpellC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(CastSpellC2SPacket::new)
+                .encoder(CastSpellC2SPacket::toBytes).consumerMainThread(CastSpellC2SPacket::handle).add();
+        //Server to Client packets
         net.messageBuilder(ManaDataSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT).decoder(ManaDataSyncS2CPacket::new)
                 .encoder(ManaDataSyncS2CPacket::toBytes).consumerMainThread(ManaDataSyncS2CPacket::handle).add();
     }

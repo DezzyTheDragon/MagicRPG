@@ -24,7 +24,8 @@ public class ScrollItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(pLevel.isClientSide){
+        //TODO: Rework how the casting of the spell scroll works
+        /*if(pLevel.isClientSide){
             if(spell != null){
                 spell.castSpell();
             }
@@ -34,7 +35,7 @@ public class ScrollItem extends Item {
         }
         else{
             pPlayer.getInventory().getSelected().shrink(1);
-        }
+        }*/
         return super.use(pLevel, pPlayer, pUsedHand);
     }
 

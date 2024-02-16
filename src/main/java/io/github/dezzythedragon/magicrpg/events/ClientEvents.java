@@ -4,6 +4,8 @@ import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.client.SpellOverlay;
 import io.github.dezzythedragon.magicrpg.gui.screen.LevelWindowScreen;
 import io.github.dezzythedragon.magicrpg.magic.Spells;
+import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
+import io.github.dezzythedragon.magicrpg.networking.packet.CastSpellC2SPacket;
 import io.github.dezzythedragon.magicrpg.util.KeyBinds;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -26,7 +28,8 @@ public class ClientEvents {
         public static void onKeyInput(InputEvent.Key key){
             if(KeyBinds.BIND_CAST_SPELL.consumeClick()){
                 // TODO: Get player spell capability, get active spell and cast that
-                Spells.MAGIC_MISSILE.castSpell();
+                //Spells.MAGIC_MISSILE.castSpell();
+                MagicMessages.sendToServer(new CastSpellC2SPacket(0));
             }
             else if(KeyBinds.BIND_NEXT_SPELL.consumeClick()){
                 // TODO: Implement a way to cycle to the next equipped spell

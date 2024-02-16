@@ -18,10 +18,11 @@ import java.util.function.Supplier;
  * spells to pass their functionality to.
  */
 
+@Deprecated
 public class MagicMissileC2SPacket {
-    public MagicMissileC2SPacket(){}
-    public MagicMissileC2SPacket(FriendlyByteBuf buff){}
-    public void toBytes(FriendlyByteBuf buff){}
+    public MagicMissileC2SPacket(){} //Standard constructor
+    public MagicMissileC2SPacket(FriendlyByteBuf buff){} //Constructor receiving data from network
+    public void toBytes(FriendlyByteBuf buff){} //writing data to network
     public boolean handle(Supplier<NetworkEvent.Context> supplier){
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {

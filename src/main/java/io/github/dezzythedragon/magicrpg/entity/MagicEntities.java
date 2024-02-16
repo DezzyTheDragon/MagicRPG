@@ -16,4 +16,6 @@ public class MagicEntities {
 
     public static final RegistryObject<EntityType<MagicMissileProjectile>> MAGIC_MISSILE_PROJECTILE = MAGIC_ENTITIES.register("magic_missile",
             () -> EntityType.Builder.<MagicMissileProjectile>of(MagicMissileProjectile::new, MobCategory.MISC).sized(0.5f, 0.5f).build("magic_missile"));
+    public static final RegistryObject<EntityType<MagicFireballProjectile>> FIREBALL_PROJECTILE = MAGIC_ENTITIES.register("magic_fireball",
+            () -> EntityType.Builder.<MagicFireballProjectile>of(MagicFireballProjectile::new, MobCategory.MISC).sized(0.5f, 0.5f).build("magic_fireball"));
 }

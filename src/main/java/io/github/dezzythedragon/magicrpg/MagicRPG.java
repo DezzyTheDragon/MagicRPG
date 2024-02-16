@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import io.github.dezzythedragon.magicrpg.entity.MagicEntities;
 import io.github.dezzythedragon.magicrpg.items.MagicItems;
 import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
+import io.github.dezzythedragon.magicrpg.renderer.FireballRenderer;
 import io.github.dezzythedragon.magicrpg.renderer.MagicMissileRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
@@ -80,6 +81,7 @@ public class MagicRPG {
 
             // Register entities
             EntityRenderers.register(MagicEntities.MAGIC_MISSILE_PROJECTILE.get(), MagicMissileRenderer::new);
+            EntityRenderers.register(MagicEntities.FIREBALL_PROJECTILE.get(), FireballRenderer::new);
         }
     }
 }
