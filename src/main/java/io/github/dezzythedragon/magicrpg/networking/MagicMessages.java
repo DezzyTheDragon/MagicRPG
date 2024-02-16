@@ -2,6 +2,7 @@ package io.github.dezzythedragon.magicrpg.networking;
 
 import io.github.dezzythedragon.magicrpg.MagicRPG;
 import io.github.dezzythedragon.magicrpg.networking.packet.MagicMissileC2SPacket;
+import io.github.dezzythedragon.magicrpg.networking.packet.ManaDataSyncS2CPacket;
 import io.github.dezzythedragon.magicrpg.networking.packet.TestC2SPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,6 +27,8 @@ public class MagicMessages {
 
         net.messageBuilder(MagicMissileC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER).decoder(MagicMissileC2SPacket::new)
                 .encoder(MagicMissileC2SPacket::toBytes).consumerMainThread(MagicMissileC2SPacket::handle).add();
+        net.messageBuilder(ManaDataSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT).decoder(ManaDataSyncS2CPacket::new)
+                .encoder(ManaDataSyncS2CPacket::toBytes).consumerMainThread(ManaDataSyncS2CPacket::handle).add();
     }
 
     public static <MSG> void sendToServer(MSG message){

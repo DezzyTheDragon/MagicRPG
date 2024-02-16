@@ -2,8 +2,11 @@ package io.github.dezzythedragon.magicrpg.networking.packet;
 
 import io.github.dezzythedragon.magicrpg.entity.MagicMissileProjectile;
 import io.github.dezzythedragon.magicrpg.magic.PlayerMagicProvider;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -29,13 +32,16 @@ public class MagicMissileC2SPacket {
             //          spell init portion of the spell.
             player.getCapability(PlayerMagicProvider.PLAYER_MAGIC).ifPresent(playerMagic -> {
                 if(playerMagic.getManaLevel() >= 10){
-                    playerMagic.removeMana(10);
+                    playerMagic.removeMana(10, player);
                     playerMagic.resetTime();
                     MagicMissileProjectile missile = new MagicMissileProjectile(level, player);
                     missile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.0F, 1.0F);
                     level.addFreshEntity(missile);
                 }
-                player.sendSystemMessage(Component.literal("Mana Level: " + playerMagic.getManaLevel()));
+                else
+                {
+                    player.sendSystemMessage(Component.translatable("spell.magicrpg.low_mana").withStyle(ChatFormatting.RED));
+                }
             });
         });
         return true;

@@ -43,7 +43,8 @@ public class SpellOverlay {
 
         // Render the bar overlay to display amount of mana player has
         //int manaAmount = (int)(texture_width * percentage of current manna)
-        int manaAmount = 65;
+        //int manaAmount = 65;
+        int manaAmount = (int)(65.0F * ((float)ClientManaData.getPlayerMana() / 100.0F));
 
         RenderSystem.setShaderTexture(0, MANA_FULL);
         gui.blit(poseStack, x, y, 1, 33, manaAmount, 5);

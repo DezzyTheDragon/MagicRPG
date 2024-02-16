@@ -6,6 +6,7 @@ import io.github.dezzythedragon.magicrpg.items.ConjuredSwordItem;
 import io.github.dezzythedragon.magicrpg.magic.PlayerMagic;
 import io.github.dezzythedragon.magicrpg.magic.PlayerMagicProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -66,7 +67,7 @@ public class MagicEvents {
         public static void onPlayerTick(TickEvent.PlayerTickEvent event){
             if(event.side == LogicalSide.SERVER){
                 event.player.getCapability(PlayerMagicProvider.PLAYER_MAGIC).ifPresent(playerMagic -> {
-                    playerMagic.tick();
+                    playerMagic.tick((ServerPlayer) event.player);
                 });
             }
         }

@@ -16,6 +16,7 @@
 
   "spell.magicrpg.magic_missile": "Magic Missile",
   "spell.magicrpg.blank": "It was blank",
+  "spell.magicrpg.low_mana": "Not enough mana",
 
   "itemGroup.magic_tab": "Magic RPG",
   "magicrpg.gui.level": "Leveling",

@@ -1,7 +1,10 @@
 package io.github.dezzythedragon.magicrpg.magic;
 
 import com.mojang.logging.LogUtils;
+import io.github.dezzythedragon.magicrpg.networking.MagicMessages;
+import io.github.dezzythedragon.magicrpg.networking.packet.ManaDataSyncS2CPacket;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerPlayer;
 
 public class PlayerMagic {
     private final String MANA_LEVEL_KEY = "mana_level";
@@ -20,12 +23,14 @@ public class PlayerMagic {
         return manaLevel;
     }
 
-    public void addMana(int add){
+    public void addMana(int add, ServerPlayer player){
         manaLevel = Math.min(manaLevel + add, BASE_MANNA_CAP + manaCapModifier);
+        MagicMessages.sendToPlayer(new ManaDataSyncS2CPacket(manaLevel), player);
     }
 
-    public void removeMana(int sub){
+    public void removeMana(int sub, ServerPlayer player){
         manaLevel = Math.max(manaLevel - sub, 0);
+        MagicMessages.sendToPlayer(new ManaDataSyncS2CPacket(manaLevel), player);
     }
 
     public void increaseManaCap(int add){
@@ -36,12 +41,12 @@ public class PlayerMagic {
         restoreTime = 0;
     }
 
-    public void tick(){
+    public void tick(ServerPlayer player){
         if(restoreTime >= RESTORE_BUFFER_TIME){
             if(manaLevel < BASE_MANNA_CAP + manaCapModifier){
                 if(restoreTime % 10 == 0){
-                    addMana(1);
-                    LogUtils.getLogger().info("Mana: " + manaLevel + "/" + (BASE_MANNA_CAP + manaCapModifier));
+                    addMana(1, player);
+                    //LogUtils.getLogger().info("Mana: " + manaLevel + "/" + (BASE_MANNA_CAP + manaCapModifier));
                 }
                 restoreTime++;
             }
